@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube Subscribers</title>
+    <style>
+      .maindiv {
+        background-color: black;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+      }
+      .container{
+        margin-top: 10vh
+      }
+      .almabetter {
+        background-color: aquamarine;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2vh 0;
+        text-align: center;
+      }
+      .upperdiv {
+        background-color: aqua;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: aqua;
+      }
+      .lowerdiv {
+        margin-top: 2vh;
+        background-color: aquamarine;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      ul li {
+        margin: 2vh;
+      }
+      h2 {
+        margin-top: 5px;
+        text-align: center;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="maindiv">
+      <div class="container">
+        <div class="almabetter">
+          <h1>Almabetter BackEnd Project</h1>
+        </div>
+        <div class="upperdiv">
+          <h1>Get Youtube Subscribers</h1>
+          <h2>You can try entering each route using the routes given below</h2>
+        </div>
+        <div class="lowerdiv">
+          <ul>
+            <li>
+              GET <b>/subscribers</b> : Provides an array of all subscribers
+              details in the database.
+            </li>
+            <li>
+              GET <b>/subscribers/names</b> : Provides an array of all subscribers
+              with only two feilds, their names and subscribed channel.
+            </li>
+            <li>
+              GET <b>/subscribers/:id</b> : Provides the details of subscriber
+              with the given ID.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
