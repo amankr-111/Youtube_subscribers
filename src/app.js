@@ -3,11 +3,16 @@ const express = require('express');
 const app = express()
 const path = require("path");
 
+app.use(express.static(path.join(__dirname, 'src')));
 
 const schema = require("./models/subscribers"); // Import the subscriber model
 const { error } = require("console"); // Import the 'error' object from the console module
+// Serve static files from the "public" directory
+
+
+// This code is responsible for the root route "/"
 app.get("/", (req, res) => {
-  res.send("hello World!"); // Serve the index.html file as the home page
+  res.sendFile(path.join(__dirname, 'index.html')); // Serve the HTML page
 });
 
 // This code is responsible for the subscribers route
