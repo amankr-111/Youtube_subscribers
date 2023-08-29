@@ -3,39 +3,42 @@ const express = require('express');
 const app = express()
 const path = require("path");
 
-// Your code goes here
-const schema = require("./models/subscribers"); // Import the subscriber model
-// const { error } = require("console"); // Import the 'error' object from the console module
-app.get("/", (req, res) => {
-    res.send("hello World!"); // Serve the index.html file as the home page
-  });
 
+const schema = require("./models/subscribers"); // Import the subscriber model
+const { error } = require("console"); // Import the 'error' object from the console module
+app.get("/", (req, res) => {
+  res.send("hello World!"); // Serve the index.html file as the home page
+});
+
+// This code is responsible for the subscribers route
 app.get("/subscribers", async (req, res, next) => {
     try {
       let subscribers = await schema.find(); // Retrieve all subscribers from the schema/model
-      res.status(200).json(subscribers); // Send the subscribers as a JSON response with a status of 200 (OK)
+      res.status(200).json(subscribers); 
     } catch (err) {
       res.status(400); // Set the response status to 400 (Bad Request)
       next(err); // Pass the error to the error handling middleware
     }
   });
+  // This code is responsible for the subscribers/ name route
   app.get("/subscribers/names", async (req, res, next) => {
     try {
       let subscribers = await schema.find(
         {},
         { name: 1, subscribedChannel: 1, _id: 0 }
       ); // Retrieve subscribers with only the name and subscribedChannel fields from the schema/model
-      res.status(200).json(subscribers); // Send the subscribers as a JSON response with a status of 200 (OK)
+      res.status(200).json(subscribers);
     } catch (err) {
-      res.status(400); // Set the response status to 400 (Bad Request)
+      res.status(400); 
       next(err); // Pass the error to the error handling middleware
     }
   });
   
-  // THIS ROUTE PROVIDES THE DETAILS OF SUBSCRIBER WITH THE GIVEN ID.
+  
+  // This code is responsible for the subscribers/ID route
   app.get("/subscribers/:id", async (req, res) => {
     try {
-      const id = req.params.id; // Extract the ID parameter from the request URL
+      const id = req.params.id; 
       if (!id) {
         res.status(400).json({ message: "No ID provided" }); // Send a JSON response with a status of 400 (Bad Request)
         return;
